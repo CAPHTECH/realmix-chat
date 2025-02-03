@@ -7,12 +7,12 @@ export const useUserId = () => {
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem(USER_ID_KEY);
+    const storedUserId = sessionStorage.getItem(USER_ID_KEY);
     if (storedUserId) {
       setUserId(storedUserId);
     } else {
       const newUserId = uuidv4();
-      localStorage.setItem(USER_ID_KEY, newUserId);
+      sessionStorage.setItem(USER_ID_KEY, newUserId);
       setUserId(newUserId);
     }
   }, []);
