@@ -1,0 +1,18 @@
+services:
+  remix:
+    build: .
+    command: npm run start:remix
+    ports:
+      - "5173:5173"
+    environment:
+      NODE_ENV: development
+      HOST: "0.0.0.0"
+
+  socket:
+    build: .
+    # Socket.IOサーバー用の起動コマンド（package.json に "start:socket" が定義されている前提）
+    command: npm run start:socket
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: development
