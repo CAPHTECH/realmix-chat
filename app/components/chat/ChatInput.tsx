@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react"
+import { getChatInputStyles } from "~/utils/styleHelpers"
 
 type Props = {
   onSend: (message: string) => void;
@@ -6,6 +7,7 @@ type Props = {
 
 export const ChatInput = ({ onSend }: Props): JSX.Element => {
   const [message, setMessage] = useState("");
+  const styles = getChatInputStyles();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -15,20 +17,20 @@ export const ChatInput = ({ onSend }: Props): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSubmit} className={styles.form}>
       <div className="flex-1">
         <input
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="メッセージを入力..."
-          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          className={styles.input}
         />
       </div>
       <button
         type="submit"
         disabled={!message.trim()}
-        className="rounded-xl bg-blue-500 px-4 text-white transition-colors hover:bg-blue-600 disabled:bg-gray-100 disabled:text-gray-400"
+        className={styles.button}
       >
         Send
       </button>

@@ -1,4 +1,5 @@
 import type { Message } from "~/types/message"
+import { getChatMessageStyles } from "~/utils/styleHelpers"
 
 type Props = {
   message: Message;
@@ -6,15 +7,16 @@ type Props = {
 
 export const ChatMessage = ({ message }: Props): JSX.Element => {
   const { content, sender, isOwn } = message;
+  const styles = getChatMessageStyles(isOwn);
 
   return (
-    <div className={`flex gap-3 px-4 py-2 ${isOwn ? "flex-row-reverse" : ""}`}>
+    <div className={styles.container}>
       <div className="flex-shrink-0">
         {sender.avatarUrl ? (
           <img
             src={sender.avatarUrl}
             alt={sender.name}
-            className="h-10 w-10 rounded-full object-cover"
+            className="chat-avatar"
           />
         ) : (
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
@@ -22,13 +24,9 @@ export const ChatMessage = ({ message }: Props): JSX.Element => {
           </div>
         )}
       </div>
-      <div className={`flex max-w-[70%] flex-col gap-1 ${isOwn ? "items-end" : ""}`}>
+      <div className={styles.contentWrapper}>
         <p className="text-sm font-medium text-gray-900">{sender.name}</p>
-        <div
-          className={`rounded-2xl px-4 py-2 ${
-            isOwn ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-900"
-          }`}
-        >
+        <div className={styles.bubble}>
           <p className="text-sm">{content}</p>
         </div>
       </div>
