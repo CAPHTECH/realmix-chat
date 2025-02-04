@@ -28,16 +28,10 @@ export const ChatInput: FC<Props> = ({ onSend }) => {
       <button
         type="submit"
         disabled={!message.trim()}
-        className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500 text-white transition-colors hover:bg-blue-600 disabled:bg-gray-100 disabled:text-gray-400"
+        className="rounded-xl bg-blue-500 px-4 text-white transition-colors hover:bg-blue-600 disabled:bg-gray-100 disabled:text-gray-400"
       >
-        <SendIcon />
+        Send
       </button>
     </form>
   );
-};
-
-const SendIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
-    <path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.42,29.84l85.62,40.55,40.55,85.62A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14L118.42,148,168,98.42l-88-88L216.89,41.77l.14-.05Z" />
-  </svg>
-); 
+}; 
