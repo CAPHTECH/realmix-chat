@@ -1,10 +1,10 @@
-import { useState, type FC, type FormEvent } from "react"
+import { useState, type FormEvent } from "react"
 
 type Props = {
   onSend: (message: string) => void;
 };
 
-export const ChatInput: FC<Props> = ({ onSend }) => {
+export const ChatInput = ({ onSend }: Props): JSX.Element => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e: FormEvent) => {

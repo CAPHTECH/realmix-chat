@@ -1,11 +1,10 @@
-import type { FC } from "react"
 import type { Message } from "~/types/message"
 
 type Props = {
   message: Message;
 };
 
-export const ChatMessage: FC<Props> = ({ message }) => {
+export const ChatMessage = ({ message }: Props): JSX.Element => {
   const { content, sender, isOwn } = message;
 
   return (
@@ -19,7 +18,7 @@ export const ChatMessage: FC<Props> = ({ message }) => {
           />
         ) : (
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
-            {sender.name[0]}
+            {sender.name?.[0] || "?"}
           </div>
         )}
       </div>

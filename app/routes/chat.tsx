@@ -1,5 +1,4 @@
 import { MetaFunction } from "@remix-run/node"
-import type { FC } from "react"
 import { ChatHeader } from "~/components/chat/ChatHeader"
 import { ChatInput } from "~/components/chat/ChatInput"
 import { ChatMessage } from "~/components/chat/ChatMessage"
@@ -10,7 +9,7 @@ export const meta: MetaFunction = () => {
   return [{ title: "Galileo Design - Chat" }];
 };
 
-const Chat: FC = () => {
+const Chat = (): JSX.Element => {
   const userId = useUserId();
   const { messages, addMessage } = useMessages(userId);
 

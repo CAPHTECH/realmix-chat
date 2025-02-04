@@ -1,10 +1,10 @@
-import type { FC } from "react";
+import type { ReactNode } from "react";
 
 type IconProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-export const Icon: FC<IconProps> = ({ children }) => (
+export const Icon = ({ children }: IconProps): JSX.Element => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="20"
