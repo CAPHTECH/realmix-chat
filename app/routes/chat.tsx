@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
 
 const Chat = (): JSX.Element => {
   const userId = useUserId();
-  const { messages, addMessage } = useMessages(userId);
+  const { messages, addMessage, error } = useMessages(userId);
 
   const handleSendMessage = (content: string) => {
     addMessage(content);
@@ -25,10 +25,17 @@ const Chat = (): JSX.Element => {
           <div className="flex flex-wrap justify-between gap-3 p-4">
             <div className="flex flex-col gap-3">
               <h1 className="text-[32px] font-bold leading-tight">You</h1>
-              <p className="text-sm font-normal text-gray-500">ID: {userId.slice(0, 8)}</p>
+              <p className="text-sm font-normal text-gray-500">
+                ID: {userId?.slice(0, 8) ?? 'Unknown'}
+              </p>
             </div>
           </div>
-          <div className="flex-1 overflow-y-auto px-4">
+          {error && (
+            <div className="mx-4 mb-4 rounded-md bg-red-50 p-4">
+              <p className="text-sm text-red-700">{error}</p>
+            </div>
+          )}
+          <div className="flex-1 overflow-y-auto px-4" role="log" aria-live="polite" aria-label="チャットメッセージ">
             <div className="flex flex-col gap-2 py-4">
               {messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />

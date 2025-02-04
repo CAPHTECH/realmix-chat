@@ -17,7 +17,7 @@ export const ChatInput = ({ onSend }: Props): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit} className={styles.form} aria-label="メッセージ入力フォーム">
       <div className="flex-1">
         <input
           type="text"
@@ -25,12 +25,15 @@ export const ChatInput = ({ onSend }: Props): JSX.Element => {
           onChange={(e) => setMessage(e.target.value)}
           placeholder="メッセージを入力..."
           className={styles.input}
+          aria-label="メッセージ入力"
+          required
         />
       </div>
       <button
         type="submit"
         disabled={!message.trim()}
         className={styles.button}
+        aria-label="メッセージを送信"
       >
         Send
       </button>
