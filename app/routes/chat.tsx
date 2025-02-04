@@ -25,9 +25,7 @@ const Chat = (): JSX.Element => {
           <div className="flex flex-wrap justify-between gap-3 p-4">
             <div className="flex flex-col gap-3">
               <h1 className="text-[32px] font-bold leading-tight">You</h1>
-              {userId && (
-                <p className="text-sm font-normal text-gray-500">ID: {userId.slice(0, 8)}</p>
-              )}
+              <p className="text-sm font-normal text-gray-500">ID: {userId.slice(0, 8)}</p>
             </div>
           </div>
           <div className="flex-1 overflow-y-auto px-4">

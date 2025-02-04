@@ -6,6 +6,6 @@ export type Message = {
     name: string;
     avatarUrl?: string;
   };
-  createdAt: Date;
+  createdAt: string;
   isOwn: boolean;
 };
