@@ -4,32 +4,43 @@
 
 ## 環境情報
 
-- **Node.js バージョン**: 18.x (Docker環境では `node:18-alpine` を使用)
-- **Docker**: Docker Engine 20.10以上（テスト済み）
-- **docker-compose**: 1.29.x以上（version "3.8" を利用）
+- **Node.js バージョン**: 18.x
+- **Docker**: Docker Engine 20.10以上（オプション）
+- **docker-compose**: 1.29.x以上（オプション）
 
 ## セットアップ手順
+
+### 通常の開発環境
 
 1. **プロジェクトのクローンおよび依存パッケージのインストール**  
    すでにセットアップ済みのRemixプロジェクトをクローンし、依存パッケージをインストールしてください:
 
    ```
-   yarn install
-   ```
-
-   または
-
-   ```
    npm install
    ```
 
-2. **Docker環境での開発・起動**  
-   プロジェクトルートに配置された `Dockerfile` と `docker-compose.yml` により、Remixサーバー（ポート3000）とSocket.IOサーバー（ポート4000）の両方が起動可能です。  
-   以下のコマンドで、Docker環境をビルド＆起動します:
+2. **サーバーの起動**  
+   以下のコマンドで、RemixサーバーとSocket.IOサーバーを起動します:
+
+   Remixサーバー（ポート5173）:
 
    ```
-   docker-compose up --build
+   npm run start:remix
    ```
+
+   Socket.IOサーバー（ポート4000）:
+
+   ```
+   npm run start:socket
+   ```
+
+### Docker環境（オプション）
+
+Docker環境を使用する場合は、以下のコマンドで両方のサーバーを同時に起動できます:
+
+```
+docker-compose up --build
+```
 
 ## 注意点
 
@@ -40,5 +51,5 @@
 
 - **Remix**: フルスタックWebフレームワーク
 - **Socket.IO**: リアルタイムチャット用の通信ライブラリ
-- **TypeScript**: 静的型付けのオプション（必要に応じて）
-- **Docker / docker-compose**: 開発環境の構築と運用に利用
+- **TypeScript**: 静的型付け言語
+- **Docker**: 開発環境の構築と運用（オプション）
