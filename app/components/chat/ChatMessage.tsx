@@ -6,7 +6,7 @@ type Props = {
 };
 
 export const ChatMessage = ({ message }: Props): JSX.Element => {
-  const { content, sender, isOwn } = message;
+  const { content, sender, isOwn, createdAt } = message;
   const styles = getChatMessageStyles(isOwn);
 
   return (
@@ -25,7 +25,10 @@ export const ChatMessage = ({ message }: Props): JSX.Element => {
         )}
       </div>
       <div className={styles.contentWrapper}>
-        <p className="text-sm font-medium text-gray-900">{sender.name}</p>
+        <div className={`flex items-center gap-2 ${isOwn ? "flex-row-reverse" : ""}`}>
+          <p className="text-sm font-medium text-gray-900">{sender.name}</p>
+          <span className="text-xs text-gray-500">{createdAt}</span>
+        </div>
         <div className={styles.bubble}>
           <p className="text-sm">{content}</p>
         </div>
