@@ -22,7 +22,7 @@ type ChatHeaderStyles = {
 export const getChatMessageStyles = (isOwn: boolean): ChatMessageStyles => ({
   container: `flex gap-3 px-4 py-2 ${isOwn ? "flex-row-reverse" : ""}`,
   contentWrapper: `flex max-w-[70%] flex-col gap-1 ${isOwn ? "items-end" : ""}`,
-  bubble: `rounded-2xl px-4 py-2 ${
+  bubble: `rounded-2xl px-4 py-2 break-all overflow-wrap-anywhere ${
     isOwn ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-900"
   }`,
 });
