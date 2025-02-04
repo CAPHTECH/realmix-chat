@@ -29,7 +29,10 @@ type HeaderButtonProps = {
 
 const HeaderButton: FC<HeaderButtonProps> = ({ icon }) => {
   return (
-    <button className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-900">
+    <button
+      type="button"
+      className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-900"
+    >
       {icon}
     </button>
   );
